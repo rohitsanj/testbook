@@ -191,7 +191,7 @@ class TestbookNotebookClient(NotebookClient):
 
         if after is not None and before is not None:
             raise ValueError("pass either before or after as kwargs")
-        elif before is not None:
+        if before is not None:
             inject_idx = self._cell_index(before)
         elif after is not None:
             inject_idx = self._cell_index(after) + 1
