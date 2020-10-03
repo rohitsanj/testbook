@@ -6,9 +6,6 @@ class TestbookNode(NotebookNode):
     Extends `NotebookNode` to perform assertions
     """
 
-    def __init__(self, *args, **kw):
-        super().__init__(*args, **kw)
-
     @property
     def output_text(self):
         text = ''
