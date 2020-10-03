@@ -80,7 +80,7 @@ class TestbookNotebookClient(NotebookClient):
 
         if isinstance(tag, int):
             return tag
-        elif not isinstance(tag, str):
+        if not isinstance(tag, str):
             raise TypeError('expected tag as str')
 
         for idx, cell in enumerate(self.cells):
