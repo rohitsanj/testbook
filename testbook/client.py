@@ -100,7 +100,7 @@ class TestbookNotebookClient(NotebookClient):
                 raise TestbookError('testbook does not support step argument')
 
             cell = range(start, stop + 1)
-        elif isinstance(cell, str) or isinstance(cell, int):
+        elif isinstance(cell, (str, int)):
             cell = [cell]
 
         cell_indexes = cell
