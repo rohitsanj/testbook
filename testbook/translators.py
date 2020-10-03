@@ -59,22 +59,22 @@ class Translator(object):
         """Translate each of the standard json/yaml types to appropriate objects."""
         if val is None:
             return cls.translate_none(val)
-        elif isinstance(val, str):
+        if isinstance(val, str):
             return cls.translate_str(val)
         # Needs to be before integer checks
-        elif isinstance(val, bool):
+        if isinstance(val, bool):
             return cls.translate_bool(val)
-        elif isinstance(val, int):
+        if isinstance(val, int):
             return cls.translate_int(val)
-        elif isinstance(val, float):
+        if isinstance(val, float):
             return cls.translate_float(val)
-        elif isinstance(val, dict):
+        if isinstance(val, dict):
             return cls.translate_dict(val)
-        elif isinstance(val, list):
+        if isinstance(val, list):
             return cls.translate_list(val)
-        elif isinstance(val, tuple):
+        if isinstance(val, tuple):
             return cls.translate_tuple(val)
-        elif isinstance(val, TestbookObjectReference):
+        if isinstance(val, TestbookObjectReference):
             return val.name
 
         # Use this generic translation as a last resort
@@ -94,12 +94,11 @@ class PythonTranslator(Translator):
     def translate_float(cls, val):
         if math.isfinite(val):
             return cls.translate_raw_str(val)
-        elif math.isnan(val):
+        if math.isnan(val):
             return "float('nan')"
-        elif val < 0:
+        if val < 0:
             return "float('-inf')"
-        else:
-            return "float('inf')"
+        return "float('inf')"
 
     @classmethod
     def translate_bool(cls, val):
